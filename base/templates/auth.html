@@ -1,0 +1,76 @@
+{#
+auth.html
+Template para registro y login de usuarios.
+Hereda de base.html para mantener el diseño y navegación.
+- Formulario de registro con validaciones y mensajes flash.
+- Formulario de login con mensajes flash.
+#}
+{% extends 'base.html' %}
+{% block title %}Login y Registro{% endblock %}
+{% block content %}
+<h1>Bienvenid@</h1>
+<div class="row">
+    <!-- Sección de registro de usuario -->
+    <div class="col-md-6">
+        <h2>Registrarse</h2>
+        {# Muestra mensajes flash de validación para registro #}
+        {% with messages = get_flashed_messages(category_filter=['registro']) %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        <form action="/usuarios/procesar_registro" method="post" class="">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre:</label>
+                <input type="text" class="form-control" name="nombre">
+            </div>
+            <div class="mb-3">
+                <label for="apellido" class="form-label">Apellido:</label>
+                <input type="text" class="form-control" name="apellido">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" class="form-control" name="email">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña:</label>
+                <input type="password" class="form-control" name="password">
+            </div>
+            <div class="mb-3">
+                <label for="confirm_password" class="form-label">Confirmar Contraseña:</label>
+                <input type="password" class="form-control" name="confirm_password">
+            </div>
+            <button type="submit" class="btn btn-primary">Registrar</button>
+        </form>
+    </div>
+    <!-- Sección de login de usuario -->
+    <div class="col-md-6">
+        <h2>Iniciar Sesión</h2>
+        {# Muestra mensajes flash de validación para login #}
+        {% with messages = get_flashed_messages(category_filter=['login']) %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        <form action="/usuarios/procesar_login" method="post">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" class="form-control" name="email">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña:</label>
+                <input type="password" class="form-control" name="password">
+            </div>
+            <button type="submit" class="btn btn-success">Ingresar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

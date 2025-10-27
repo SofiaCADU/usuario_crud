@@ -1,0 +1,32 @@
+/* styles.css - Estilos personalizados para Citas Famosas */
+
+body {
+    background-color: #a8edea;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+footer {
+    background: #212529;
+    color: #fff;
+}
+
+.card {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.btn {
+    margin-right: 5px;
+}
+
+h1, h2, h3 {
+    color: #343a40;
+}
+
+ul {
+    padding-left: 1.2rem;
+}
